@@ -20,7 +20,8 @@ public class App {
         String body = response.body();
         // System.out.println(body);
 
-        var parser = new JsonParserRegex();
+        // var parser = new JsonParserRegex();        
+        var parser = new JsonParserJackson();
         List<Map<String, String>> movies = parser.parse(body);
         // System.out.println(movies.size());
 
