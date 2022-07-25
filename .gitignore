@@ -8,6 +8,9 @@
 ## OS X
 .DS_Store
 
+# Output
+*.png
+
 # Package Files #
 *.jar
 *.war

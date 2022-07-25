@@ -1,4 +1,5 @@
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -26,15 +27,18 @@ public class App {
         // System.out.println(movies.size());
 
         System.out.println();
+
+        var sticker = new StickerGenarator();
         for (Map<String,String> movie : movies) {
             int rating = Integer.valueOf(movie.get("imDbRating").substring(0, 1));
             rating += (Integer.valueOf(movie.get("imDbRating").substring(2, 3)) > 4) ? 1 : 0; 
 
             System.out.println(ConsoleColors.WHITE_BOLD_BRIGHT + movie.get("title"));
-            System.out.println(ConsoleColors.RESET + movie.get("image"));
             System.out.print(ConsoleColors.YELLOW_BOLD_BRIGHT + ConsoleEmojis.STAR.repeat(rating));
             System.out.println(ConsoleColors.RESET + "(" + movie.get("imDbRating") + ")");
             System.out.println();
+
+            sticker.create(new URL(movie.get("image")).openStream(), movie.get("title"), "TOPZERA!!!");
         }
     }
 }
